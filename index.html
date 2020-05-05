@@ -200,9 +200,9 @@ function confirmar(){
     if (modo[0].checked){
         res1.innerHTML = '*O modo FFA está indisponível no momento'
     }else if (modo[1].checked){
-        img.src='glhf.png'
         clearInterval(int)
         if (vetor.length==4){
+            img.src='glhf.png'
             res2.innerHTML = '3'
             function getRandomInt(min, max) {
                 
@@ -259,6 +259,7 @@ function confirmar(){
             }      
             var int = setInterval(contreg,600)
         }else{
+            img.src=''
             res1.innerHTML = "*Número de jogadores inválido"
         }  
         
