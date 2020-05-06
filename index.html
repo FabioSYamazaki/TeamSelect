@@ -77,6 +77,9 @@ div#res3{
     text-align: center;
     font-size: 20pt;
 }
+div#res4{
+    font: normal 12pt Arial;
+}
    
 
 
@@ -123,6 +126,7 @@ div#res3{
         </div>
         <div id="res2"></div>
         <div id="res3"></div>
+        <div id="res4"></div>
     </section>
     <footer>
         <p>*Otimizado para Desktop</p>
@@ -169,6 +173,7 @@ function avatar(){
 function add(){
     res3.innerHTML=''
     res1.innerHTML = ''
+    res4.innerHTML=''
     let text1 = select.options[select.selectedIndex].text
         if(text1==''){
             alert('Selecione um jogador!')
@@ -189,6 +194,7 @@ function add(){
 function remover(){
     img.src = ''
     res3.innerHTML=''
+    res4.innerHTML=''
     let text1 = select.options[select.selectedIndex].text
     vetor.splice(vetor.indexOf('text1'), 1)
     let item = document.createElement('option')
@@ -198,6 +204,7 @@ function remover(){
 }
 function confirmar(){
     res3.innerHTML=''
+    res4.innerHTML=''
     var modo = document.getElementsByName('type')
     if (modo[0].checked){
         res1.innerHTML = '*O modo FFA está indisponível no momento'
@@ -218,45 +225,217 @@ function confirmar(){
             var valorR = getRandomInt(0,2)
                 switch (valorR){
                     case 0:
-                    a1=2
-                    a2=1
-                    b1=3
-                    b2=0
+                    var valorR2 = getRandomInt(0,7)
+                    switch (valorR2){
+                        case 0:
+                        a1=0
+                        a2=1
+                        b1=2
+                        b2=3
+                        break
+                        case 1:
+                        a1=1
+                        a2=0
+                        b1=2
+                        b2=3
+                        break
+                        case 2:
+                        a1=0
+                        a2=1
+                        b1=3
+                        b2=2
+                        break
+                        case 3:
+                        a1=1
+                        a2=0
+                        b1=3
+                        b2=2
+                        break
+                        case 4:
+                        a1=2
+                        a2=3
+                        b1=0
+                        b2=1
+                        break
+                        case 5:
+                        a1=2
+                        a2=3
+                        b1=1
+                        b2=0
+                        break
+                        case 6:
+                        a1=3
+                        a2=2
+                        b1=0
+                        b2=1
+                        break
+                        case 7:
+                        a1=3
+                        a2=2
+                        b1=1
+                        b2=0
+                        break
+                    }
                     break
                     case 1:
-                    a1=1
-                    a2=3
-                    b1=0
-                    b2=2
+                    var valorR2 = getRandomInt(0,3)
+                    switch (valorR2){
+                        case 0:
+                        a1=0
+                        a2=2
+                        b1=1
+                        b2=3
+                        break
+                        case 1:
+                        a1=2
+                        a2=0
+                        b1=1
+                        b2=3
+                        break
+                        case 2:
+                        a1=0
+                        a2=2
+                        b1=3
+                        b2=1
+                        break
+                        case 3:
+                        a1=2
+                        a2=0
+                        b1=3
+                        b2=1
+                        break
+                        case 4:
+                        a1=3
+                        a2=1
+                        b1=2
+                        b2=0
+                        break
+                        case 5:
+                        a1=3
+                        a2=1
+                        b1=0
+                        b2=2
+                        break
+                        case 6:
+                        a1=1
+                        a2=3
+                        b1=2
+                        b2=0
+                        break
+                        case 7:
+                        a1=1
+                        a2=3
+                        b1=0
+                        b2=2
+                        break
+                    }
                     break
                     case 2:
-                    a1=0
-                    a2=1
-                    b1=2
-                    b2=3
+                    var valorR2 = getRandomInt(0,3)
+                    switch (valorR2){
+                        case 0:
+                        a1=0
+                        a2=3
+                        b1=1
+                        b2=2
+                        break
+                        case 1:
+                        a1=3
+                        a2=0
+                        b1=1
+                        b2=2
+                        break
+                        case 2:
+                        a1=0
+                        a2=3
+                        b1=2
+                        b2=1
+                        break
+                        case 3:
+                        a1=3
+                        a2=0
+                        b1=2
+                        b2=1
+                        break
+                        case 4:
+                        a1=1
+                        a2=2
+                        b1=0
+                        b2=3
+                        break
+                        case 5:
+                        a1=1
+                        a2=2
+                        b1=3
+                        b2=0
+                        break
+                        case 6:
+                        a1=2
+                        a2=1
+                        b1=0
+                        b2=3
+                        break
+                        case 7:
+                        a1=2
+                        a2=1
+                        b1=3
+                        b2=0
+                        break
+                    }
                     break
                 }
             /*
-            a  bags+goub vs sing+tamps
-            b  bags+sing vs tamps+goub
-            c  bags+tampx vs sing+goub
+            a1  bags+goub vs sing+tampx
+            a2  goub+bags vs sing+tampx
+            A1  bags+goub vs tampx+sing
+            A2  goub+bags vs tampx+sing
+            
+            aa1 sing+tampx vs bags+goub
+            aa2 sing+tampx vs goub+bags
+            AA1 tampx+sing vs bags+goub
+            AA2 tampx+sing vs goub+bags
+
+
+            b1  bags+sing vs tamps+goub
+            b2  bags+sing vs goub+tamps
+            B1  sing+bags vs tamps+goub
+            B2  sing+bags vs goub+tamps
+              
+            bb1 tamps+goub vs bags+sing
+            bb2 goub+tamps vs bags+sing
+            BB1 tamps+goub vs sing+bags
+            BB2 goub+tamps vs sing+bags
+
+
+            c1  bags+tampx vs sing+goub
+            c2  bags+tampx vs goub+sing
+            C1  tampx+bags vs sing+goub
+            C2  tampx+bags vs goub+sing
+
+            cc1 sing+goub vs bags+tampx
+            cc2 goub+sing vs bags+tampx
+            CC1 sing+goub vs tampx+bags
+            CC2 goub+sing vs tampx+bags
             */
-            var cont=3
+            var cont=4
             function contreg(){
                 cont--
                 switch (cont){
-                    case 2:
+                    case 3:
                         res2.innerHTML=`2<br>`
                     break
-                    case 1:
+                    case 2:
                         res2.innerHTML=`1<br>`
                     break
-                    case 0:
+                    case 1:
                         res2.innerHTML=`...<br>`
                     break
-                    default:
+                    case 0:
                         res2.innerHTML=''
-                        res3.innerHTML=`${vetor[a1]} & ${vetor[a2]} ⚔️ ${vetor[b2]} & ${vetor[b1]}<br>`
+                        res3.innerHTML=`${vetor[a1]} & ${vetor[a2]} ⚔️ ${vetor[b2]} & ${vetor[b1]}<p>`
+                    default:
+                        res4.innerHTML=`<strong>${vetor[a1]}</strong> cria.<br> <u>Ordem de turno</u>: ${vetor[a1]} ➡️ ${vetor[b2]} ➡️ ${vetor[a2]} ➡️ ${vetor[b1]}`
+
                         clearInterval(int)
                 }
             }      
