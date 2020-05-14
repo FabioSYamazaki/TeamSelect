@@ -196,10 +196,15 @@ function remover(){
     res3.innerHTML=''
     res4.innerHTML=''
     let text1 = select.options[select.selectedIndex].text
-    vetor.splice(vetor.indexOf('text1'), 1)
+    var ident = Number((vetor.indexOf('text1')).value)
+    if (ident==-1){
+        alert('O jogador não foi adicionado')
+    }else{
+    vetor.splice(ident, 1)
     let item = document.createElement('option')
     item.text = `${text1} foi removido`
     sel2.appendChild(item)
+    }
 
 }
 function confirmar(){
@@ -207,31 +212,26 @@ function confirmar(){
     res3.innerHTML=''
     res4.innerHTML=''
     var modo = document.getElementsByName('type')
-    if (modo[0].checked){
-        res1.innerHTML = '*O modo FFA está indisponível no momento'
-
-
-
-
-
-
-    }else if (modo[1].checked){
+    function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+    if (modo[0].checked && vetor.length!=4) {
+            res1.innerHTML = '*O modo FFA só está disponível para quatro (4) jogadores'
+        
+    }else if(modo[1].checked || modo[0].checked){
         clearInterval(int)
         if (vetor.length==4){
             res1.innerHTML=''
             img.src='glhf.png'
             res2.innerHTML = '3'
-            function getRandomInt(min, max) {
-                min = Math.ceil(min);
-                max = Math.floor(max);
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
+            
             var a1,a2,b1,b2
-            var vetor2 = [a1,a2,b1,b2]
             var valorR = getRandomInt(1,3)
+            var valorR2 = getRandomInt(1,8)
                 switch (valorR){
                     case 1:
-                    var valorR2 = getRandomInt(1,8)
                     switch (valorR2){
                         case 1:
                         a1=0
@@ -284,7 +284,7 @@ function confirmar(){
                     }
                     break
                     case 2:
-                    var valorR2 = getRandomInt(1,8)
+                   
                     switch (valorR2){
                         case 1:
                         a1=0
@@ -337,7 +337,7 @@ function confirmar(){
                     }
                     break
                     case 3:
-                    var valorR2 = getRandomInt(1,8)
+                    
                     switch (valorR2){
                         case 1:
                         a1=0
@@ -437,18 +437,28 @@ function confirmar(){
                         res2.innerHTML=`...<br>`
                     break
                     case 0:
-                        res2.innerHTML=''
-                        res3.innerHTML=`${vetor[a1]} & ${vetor[a2]} ⚔️ ${vetor[b2]} & ${vetor[b1]}<p>`
+                        if (modo[1].checked){
+                            res2.innerHTML=''
+                            res3.innerHTML=`${vetor[a1]} & ${vetor[a2]} ⚔️ ${vetor[b2]} & ${vetor[b1]}<p>`
+                        }else{
+                            res2.innerHTML=''
+                        }
                     default:
                         res4.innerHTML=`<strong>${vetor[a1]}</strong> cria.<br> <u>Ordem de turno</u>: ${vetor[a1]} \u{27f6} ${vetor[b2]} \u{27f6} ${vetor[a2]} \u{27f6} ${vetor[b1]}`
 
                         clearInterval(int)
                 }
-            }      
+            }   
+     
             var int = setInterval(contreg,600)
         }else{
             img.src=''
+            if (modo[1].checked){
             res1.innerHTML = "*Número de jogadores inválido"
+            }else{
+                
+            }
+        
         }  
         
 
@@ -457,9 +467,10 @@ function confirmar(){
     }else{
             alert('Você não selecionou nenhum modo de jogo.')
     }
-        
 
+     
 }
+
 
 
     </script>
